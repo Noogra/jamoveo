@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import socket from "../sockets/socket"
+import { songList } from "../songs/songList"
+
 import Button from "../components/button/Button"
+import SongHeader from "../components/song/SongHeader"
 
 export default function LivePage() {
   const location = useLocation()
@@ -10,6 +13,7 @@ export default function LivePage() {
   const selectedSongId = location.state?.songId || null
   const [songId, setSongId] = useState(selectedSongId)
   const [songContent, setSongContent] = useState(null)
+  const songInfo = songList.find((song) => song.id === songId)
 
   const user = JSON.parse(localStorage.getItem("user"))
   console.log("User in LivePage:", user)
@@ -53,18 +57,14 @@ export default function LivePage() {
   return (
     <div className="container">
       <h2>Live Page</h2>
+      <SongHeader song={songInfo} />
       {songContent.map((line, i) => (
         <div className="line" key={i}>
           {line.map((word, j) => (
             <span className="word" key={j} style={{ marginRight: 6 }}>
               {word.lyrics}
               {word.chords && !isSinger && (
-                <span
-                  className="chord"
-                  style={{ marginLeft: 3, color: "gray" }}
-                >
-                  ({word.chords})
-                </span>
+                <span className="chord">({word.chords})</span>
               )}
             </span>
           ))}

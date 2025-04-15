@@ -63,8 +63,17 @@ export default function LoginPage() {
           onChange={handleInput}
           required
         />
-        <Button type="submit">Log In</Button>
+        <div className="login-button-wrapper">
+          <Button type="submit">Log In</Button>
+        </div>
       </form>
+
+      <div className="link-wrapper">
+        <span className="line-text" onClick={() => navigate("/register")}>
+          Create account
+        </span>
+      </div>
+
       {statusMsg && <p className="status-message">{statusMsg}</p>}
     </div>
   )

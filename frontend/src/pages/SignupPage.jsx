@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import Button from "../components/button/Button"
+import Input from "../components/input/Input"
+
 export default function SignupPage() {
   // import navigate to navigate between pages.
   const navigate = useNavigate()
@@ -35,7 +38,7 @@ export default function SignupPage() {
       const result = await response.json()
       if (response.ok) {
         setStatusMsg("Registration successful!")
-        navigate("/login")
+        navigate("/main")
       } else {
         setStatusMsg(result.message || "Could not register.")
       }
@@ -46,31 +49,31 @@ export default function SignupPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>Create an Account</h2>
       <form onSubmit={submitRegistration}>
-        <input
+        <Input
           type="text"
           name="username"
           placeholder="Username"
           onChange={updateField}
           required
         />
-        <input
+        <Input
           type="password"
           name="password"
           placeholder="Password"
           onChange={updateField}
           required
         />
-        <input
+        <Input
           type="text"
           name="instrument"
           placeholder="Instrument"
           onChange={updateField}
           required
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
       {statusMsg && <p className="status-message">{statusMsg}</p>}
     </div>

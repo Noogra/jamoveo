@@ -9,7 +9,7 @@ body {
 h2 {
   text-align: center;
   font-size: 2rem;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 input, select, button {
@@ -34,6 +34,27 @@ input, select {
   color: #f2f2f2;
 }
 
+.login-button-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-wrapper {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.line-text {
+  color: #aaa;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.line-text:hover {
+  color: #fff;
+}
 
 button {
   background-color: #444;
@@ -63,7 +84,7 @@ button:hover {
 }
 
 .chord {
-  color: #999;
-  font-size: 0.85rem;
+  color: #f2f2f2;
+  font-size: 1.2rem;
   margin-left: 4px;
 }
