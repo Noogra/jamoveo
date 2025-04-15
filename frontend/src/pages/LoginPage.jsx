@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import Button from "../components/button/Button"
+import Input from "../components/input/Input"
+
 export default function LoginPage() {
   // import navigate to navigate between pages.
   const navigate = useNavigate()
@@ -46,23 +49,23 @@ export default function LoginPage() {
     <div>
       <h2>Login</h2>
       <form onSubmit={attemptLogin}>
-        <input
+        <Input
           type="text"
           name="username"
           placeholder="Username"
           onChange={handleInput}
           required
         />
-        <input
+        <Input
           type="password"
           name="password"
           placeholder="Password"
           onChange={handleInput}
           required
         />
-        <button type="submit">Log In</button>
+        <Button type="submit">Log In</Button>
       </form>
-      {statusMsg && <p>{statusMsg}</p>}
+      {statusMsg && <p className="status-message">{statusMsg}</p>}
     </div>
   )
 }

@@ -1,0 +1,20 @@
+.my-input {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 12px auto;
+    padding: 10px 12px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background-color: #222;
+    color: white;
+    transition: border 0.2s ease-in-out;
+  }
+  
+  .my-input:focus {
+    border-color: #888;
+    outline: none;
+  }
+  

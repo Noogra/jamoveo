@@ -72,7 +72,7 @@ export default function SignupPage() {
         />
         <button type="submit">Sign Up</button>
       </form>
-      {statusMsg && <p>{statusMsg}</p>}
+      {statusMsg && <p className="status-message">{statusMsg}</p>}
     </div>
   )
 }
