@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 router.post('/register', async (req, res) => {
     try {
         // get user data from request
-        const { username, password, instrument, role } = req.body;
+        const { username, password, instrument } = req.body;
         
         // check if username already signed
         const isRegistered = await User.findOne({ username });
@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
             username,
             password: hashedPassword,
             instrument,
-            role: role || 'user'
+            role: 'user'
         });
         
         // save user
@@ -62,10 +62,37 @@ router.post('/login', async (req, res) => {
          });        
     } catch(err) {
         console.error(err);
-        res.status(500).json({ message: 'Server error login to user' });
+        res.status(500).json({ message: 'Server error while login to user' });
     }
 });
 
+// delete user
+router.delete('/delete/:username', async (req, res) => {
+    try {
+        const { username } = req.params;
+        const deletedUser = await User.findOneAndDelete({ username });
+
+        if(!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: `User '${username}' deleted` });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error while deleting user' });
+    }
+});
+
+// get all users
+router.get('/all', async (req, res) => {
+    try {
+        const users = await User.find({}, '-password');
+        res.status(200).json(users);
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error while fetching users' });
+    }
+})
 
 
 module.exports = router;

@@ -1,0 +1,68 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+export default function LoginPage() {
+  // import navigate to navigate between pages.
+  const navigate = useNavigate()
+
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    password: "",
+  })
+
+  const [statusMsg, setStatusMsg] = useState("")
+
+  const handleInput = (event) => {
+    const { name, value } = event.target
+    setUserInfo((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const attemptLogin = async (event) => {
+    event.preventDefault()
+
+    try {
+      const response = await fetch("http://localhost:5050/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInfo),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setStatusMsg("Login successful!")
+        localStorage.setItem("user", JSON.stringify(result.user))
+        navigate("/main")
+      } else {
+        setStatusMsg(result.message || "Login failed")
+      }
+    } catch (err) {
+      console.error(err)
+      setStatusMsg("Server error. Please try again.")
+    }
+  }
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={attemptLogin}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleInput}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleInput}
+          required
+        />
+        <button type="submit">Log In</button>
+      </form>
+      {statusMsg && <p>{statusMsg}</p>}
+    </div>
+  )
+}
