@@ -11,5 +11,8 @@ frontend/build/
 logs/
 *.log
 
+# Rest tests
+*.rest
+
 # macOS system files
 .DS_Store
