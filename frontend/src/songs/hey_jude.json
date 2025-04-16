@@ -1,107 +1,86 @@
 [
     [
-        {
-            "lyrics": "Hey"
-        },
-        {
-            "lyrics": "Jude",
-            "chords": "F"
-        },
-        {
-            "lyrics": "don't"
-        },
-        {
-            "lyrics": "make"
-        },
-        {
-            "lyrics": "it"
-        },
-        {
-            "lyrics": "bad",
-            "chords": "C"
-        }
+      { "lyrics": "Hey" },
+      { "lyrics": "Jude", "chords": "F" },
+      { "lyrics": "don't" },
+      { "lyrics": "make" },
+      { "lyrics": "it" },
+      { "lyrics": "bad", "chords": "C" }
     ],
     [
-        {
-            "lyrics": "Take"
-        },
-        {
-            "lyrics": "a"
-        },
-        {
-            "lyrics": "sad",
-            "chords": "C7"
-        },
-        {
-            "lyrics": "song",
-            "chords": "C4/7"
-        },
-        {
-            "lyrics": "and"
-        },
-        {
-            "lyrics": "make"
-        },
-        {
-            "lyrics": "it"
-        },
-        {
-            "lyrics": "better",
-            "chords": "F"
-        }
+      { "lyrics": "Take" },
+      { "lyrics": "a" },
+      { "lyrics": "sad", "chords": "C7" },
+      { "lyrics": "song", "chords": "C4/7" },
+      { "lyrics": "and" },
+      { "lyrics": "make" },
+      { "lyrics": "it" },
+      { "lyrics": "better", "chords": "F" }
     ],
     [
-        {
-            "lyrics": "Remember",
-            "chords": "Bb"
-        },
-        {
-            "lyrics": "to"
-        },
-        {
-            "lyrics": "let"
-        },
-        {
-            "lyrics": "her"
-        },
-        {
-            "lyrics": "into"
-        },
-        {
-            "lyrics": "your"
-        },
-        {
-            "lyrics": "heart",
-            "chords": "F"
-        }
+      { "lyrics": "Remember", "chords": "Bb" },
+      { "lyrics": "to" },
+      { "lyrics": "let" },
+      { "lyrics": "her" },
+      { "lyrics": "into" },
+      { "lyrics": "your" },
+      { "lyrics": "heart", "chords": "F" }
     ],
     [
-        {
-            "lyrics": "Then"
-        },
-        {
-            "lyrics": "you"
-        },
-        {
-            "lyrics": "can"
-        },
-        {
-            "lyrics": "start",
-            "chords": "C"
-        },
-        {
-            "lyrics": "to"
-        },
-        {
-            "lyrics": "make",
-            "chords": "C7"
-        },
-        {
-            "lyrics": "it"
-        },
-        {
-            "lyrics": "better",
-            "chords": "F"
-        }
+      { "lyrics": "Then" },
+      { "lyrics": "you" },
+      { "lyrics": "can" },
+      { "lyrics": "start", "chords": "C" },
+      { "lyrics": "to" },
+      { "lyrics": "make", "chords": "C7" },
+      { "lyrics": "it" },
+      { "lyrics": "better", "chords": "F" }
+    ],
+    [
+      { "lyrics": "Hey" },
+      { "lyrics": "Jude", "chords": "F" },
+      { "lyrics": "don't" },
+      { "lyrics": "be" },
+      { "lyrics": "afraid", "chords": "C" }
+    ],
+    [
+      { "lyrics": "You" },
+      { "lyrics": "were" },
+      { "lyrics": "made", "chords": "C7" },
+      { "lyrics": "to" },
+      { "lyrics": "go" },
+      { "lyrics": "out", "chords": "F" },
+      { "lyrics": "and" },
+      { "lyrics": "get" },
+      { "lyrics": "her" }
+    ],
+    [
+      { "lyrics": "The" },
+      { "lyrics": "minute", "chords": "Bb" },
+      { "lyrics": "you" },
+      { "lyrics": "let" },
+      { "lyrics": "her" },
+      { "lyrics": "under", "chords": "F" },
+      { "lyrics": "your" },
+      { "lyrics": "skin" }
+    ],
+    [
+      { "lyrics": "Then" },
+      { "lyrics": "you" },
+      { "lyrics": "begin", "chords": "C" },
+      { "lyrics": "to" },
+      { "lyrics": "make", "chords": "C7" },
+      { "lyrics": "it" },
+      { "lyrics": "better", "chords": "F" }
+    ],
+    [
+      { "lyrics": "Na", "chords": "F" },
+      { "lyrics": "na" },
+      { "lyrics": "na", "chords": "C" },
+      { "lyrics": "na" },
+      { "lyrics": "na", "chords": "F" },
+      { "lyrics": "na" },
+      { "lyrics": "na" }
     ]
-]
+  ]
+  

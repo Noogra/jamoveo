@@ -35,7 +35,7 @@ export default function LoginPage() {
       if (response.ok) {
         setStatusMsg("Login successful!")
         localStorage.setItem("user", JSON.stringify(result.user))
-        navigate("/main")
+        navigate("/")
       } else {
         setStatusMsg(result.message || "Login failed")
       }

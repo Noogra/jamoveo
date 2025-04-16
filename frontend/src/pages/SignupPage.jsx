@@ -38,7 +38,8 @@ export default function SignupPage() {
       const result = await response.json()
       if (response.ok) {
         setStatusMsg("Registration successful!")
-        navigate("/main")
+        localStorage.setItem("user", JSON.stringify(result.user))
+        navigate("/")
       } else {
         setStatusMsg(result.message || "Could not register.")
       }

@@ -22,8 +22,8 @@ export default function AdminResults() {
   }, [query])
 
   const handleSongSelect = (songId) => {
-    socket.emit("live-song", songId) // send to server
-    navigate("/main/live", { state: { songId } })
+    socket.emit("selected-song", songId) // send to server
+    navigate("/live", { state: { songId } })
   }
 
   return (
