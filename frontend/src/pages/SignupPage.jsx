@@ -7,6 +7,7 @@ import Input from "../components/input/Input"
 export default function SignupPage({ defaultRole = "user" }) {
   // import navigate to navigate between pages.
   const navigate = useNavigate()
+  const baseURL = process.env.REACT_APP_API_BASE_URL
   // initial user data
   const [userData, setUserData] = useState({
     username: "",
@@ -28,7 +29,7 @@ export default function SignupPage({ defaultRole = "user" }) {
     event.preventDefault() // prevents from page to refresh.
 
     try {
-      const endpoint = `http://localhost:5050/api/auth/register${defaultRole === "admin" ? "-admin" : ""}`
+      const endpoint = `${baseURL}/api/auth/register${defaultRole === "admin" ? "-admin" : ""}`
       // trying to signup
       const response = await fetch(endpoint, {
         method: "POST",
