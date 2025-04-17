@@ -6,6 +6,7 @@ import "./LivePage.css"
 
 import Button from "../components/button/Button"
 import SongHeader from "../components/song/SongHeader"
+import LogoutButton from "../components/logoutButton/LogoutButton"
 
 export default function LivePage() {
   const location = useLocation()
@@ -72,28 +73,35 @@ export default function LivePage() {
   }
 
   return (
-    <div className="livepage-container">
-      <h2>Live Page</h2>
-      <SongHeader song={songInfo} />
-      {songContent.map((line, i) => (
-        <div className="livepage-line" key={i}>
-          {line.map((word, j) => (
-            <span className="livepage-word" key={j} style={{ marginRight: 6 }}>
-              {word.lyrics}
-              {word.chords && !isSinger && (
-                <span className="livepage-chord">({word.chords})</span>
-              )}
-            </span>
-          ))}
-        </div>
-      ))}
-      <button
-        className="floating-toggle"
-        onClick={() => setAutoScroll(!autoScroll)}
-      >
-        {autoScroll ? "Stop Scrolling" : "Start Scrolling"}
-      </button>
-      {isAdmin && <Button onClick={handleQuitButton}>Quit</Button>}
-    </div>
+    <>
+      <LogoutButton />
+      <div className="livepage-container">
+        <h2>Live Page</h2>
+        <SongHeader song={songInfo} />
+        {songContent.map((line, i) => (
+          <div className="livepage-line" key={i}>
+            {line.map((word, j) => (
+              <span
+                className="livepage-word"
+                key={j}
+                style={{ marginRight: 6 }}
+              >
+                {word.lyrics}
+                {word.chords && !isSinger && (
+                  <span className="livepage-chord">({word.chords})</span>
+                )}
+              </span>
+            ))}
+          </div>
+        ))}
+        <button
+          className="floating-toggle"
+          onClick={() => setAutoScroll(!autoScroll)}
+        >
+          {autoScroll ? "Stop Scrolling" : "Start Scrolling"}
+        </button>
+        {isAdmin && <Button onClick={handleQuitButton}>Quit</Button>}
+      </div>
+    </>
   )
 }

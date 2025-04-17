@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-
 import Button from "../components/button/Button"
 import Input from "../components/input/Input"
 
@@ -47,7 +46,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>Login</h2>
       <form onSubmit={attemptLogin}>
         <Input

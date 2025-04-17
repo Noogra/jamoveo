@@ -1,5 +1,7 @@
 import socket from "../sockets/socket.js"
 
+import "./AdminResults.css"
+
 import { useEffect, useState } from "react"
 import { useSearchParams, useNavigate } from "react-router-dom"
 import { songList } from "../songs/songList"
@@ -27,24 +29,23 @@ export default function AdminResults() {
   }
 
   return (
-    <div className="container">
-      <h2>Results for: "{query}"</h2>
+    <div className="results-container">
+      <h2 className="results-title">Results for: "{query}"</h2>
       {results.length > 0 ? (
-        results.map((song) => (
-          <div
-            key={song.id}
-            style={{
-              padding: "10px",
-              borderBottom: "1px solid #ccc",
-              cursor: "pointer",
-            }}
-            onClick={() => handleSongSelect(song.id)}
-          >
-            <strong>{song.title}</strong> — {song.artist}
-          </div>
-        ))
+        <div className="results-list">
+          {results.map((song) => (
+            <div
+              className="song-card"
+              key={song.id}
+              onClick={() => handleSongSelect(song.id)}
+            >
+              <div className="song-title">{song.title}</div>
+              <div className="song-artist">{song.artist}</div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No songs found.</p>
+        <p className="no-results">No songs found.</p>
       )}
     </div>
   )

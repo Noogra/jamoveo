@@ -30,6 +30,7 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <h1 className="homepage-title">JaMoveo</h1>
+      <p className="homepage-subtitle">Play music with friends</p>
       <Button onClick={() => navigate("/login")}>Sign In</Button>
     </div>
   )
