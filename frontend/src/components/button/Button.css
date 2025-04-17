@@ -1,11 +1,12 @@
 .my-button {
   background-color: #464b56;
   color: #ffffff;
-  padding: 14px 28px;
-  font-size: 1.05rem;
+  padding: 10px 20px;
+  width: auto;
+  font-size: 1rem;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  display: block;
+  display: inline-block;
   margin: 24px auto;
   border: none;
   border-radius: 10px;

@@ -21,23 +21,19 @@ export default function AdminMain() {
   }
 
   return (
-    <>
+    <div className="container">
       <LogoutButton />
-      <div className="container">
-        <h2>Search any song...</h2>
-        <Input
-          type="text"
-          placeholder="Type song or artist"
-          value={searchText}
-          onChange={(event) => setSearchText(event.target.value)}
-        />
-        <Button onClick={handleSearch}>Search</Button>
-        {!sessionStarted && (
-          <Button onClick={handleSessionButton}>
-            Create Rehearsal Session
-          </Button>
-        )}
-      </div>
-    </>
+      <h2>Search any song...</h2>
+      <Input
+        type="text"
+        placeholder="Type song or artist"
+        value={searchText}
+        onChange={(event) => setSearchText(event.target.value)}
+      />
+      <Button onClick={handleSearch}>Search</Button>
+      {!sessionStarted && (
+        <Button onClick={handleSessionButton}>Create Rehearsal Session</Button>
+      )}
+    </div>
   )
 }
