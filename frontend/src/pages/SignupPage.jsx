@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import Button from "../components/button/Button"
 import Input from "../components/input/Input"
 
-export default function SignupPage() {
+export default function SignupPage({ defaultRole = "user" }) {
   // import navigate to navigate between pages.
   const navigate = useNavigate()
   // initial user data
@@ -28,11 +28,12 @@ export default function SignupPage() {
     event.preventDefault() // prevents from page to refresh.
 
     try {
-      // trying to login
-      const response = await fetch("http://localhost:5050/api/auth/register", {
+      const endpoint = `http://localhost:5050/api/auth/register${defaultRole === "admin" ? "-admin" : ""}`
+      // trying to signup
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+        body: JSON.stringify({ ...userData, role: defaultRole }),
       })
       // check the response from server
       const result = await response.json()
@@ -51,7 +52,11 @@ export default function SignupPage() {
 
   return (
     <div className="container">
-      <h2>Create an Account</h2>
+      <h2>
+        {defaultRole === "admin"
+          ? "Create an admin account"
+          : "Create an account"}
+      </h2>
       <form onSubmit={submitRegistration}>
         <Input
           type="text"

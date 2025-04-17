@@ -2,6 +2,9 @@ const app = require("./app")
 const http = require("http")
 const { Server } = require("socket.io")
 const PORT = process.env.PORT || 5050
+const mongoose = require("mongoose")
+
+require("dotenv").config()
 
 // create http server
 const server = http.createServer(app)
@@ -34,7 +37,21 @@ io.on("connection", (socket) => {
   })
 })
 
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Connected to MongoDB")
+    server.listen(PORT, () => {
+      console.log(`Server running with WebSocket on port ${PORT}`)
+    })
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err)
+  })
+
+console.log("MONGO_URI:", process.env.MONGO_URI)
+
 // run server
-server.listen(PORT, () => {
-  console.log(`Server running with WebSocket on port ${PORT}`)
-})
+// server.listen(PORT, () => {
+//   console.log(`Server running with WebSocket on port ${PORT}`)
+// })
