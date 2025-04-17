@@ -7,7 +7,6 @@ import Input from "../components/input/Input"
 export default function LoginPage() {
   // import navigate to navigate between pages.
   const navigate = useNavigate()
-  const baseURL = process.env.REACT_APP_API_BASE_URL
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -25,6 +24,7 @@ export default function LoginPage() {
     event.preventDefault()
 
     try {
+      const baseURL = process.env.REACT_APP_API_BASE_URL
       const response = await fetch(`${baseURL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
