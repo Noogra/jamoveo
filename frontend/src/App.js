@@ -7,6 +7,8 @@ import PlayerMain from "./pages/PlayerMain"
 import AdminResults from "./pages/AdminResults"
 import LivePage from "./pages/LivePage"
 import HomePage from "./pages/HomePage"
+import ProtectedRoute from "./components/ProtectedRoute"
+import AdminOnlyRoute from "./components/AdminOnlyRoute"
 
 function App() {
   return (
@@ -19,10 +21,38 @@ function App() {
           element={<SignupPage defaultRole="admin" />}
         />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminMain />} />
-        <Route path="/player" element={<PlayerMain />} />
-        <Route path="/admin/results" element={<AdminResults />} />
-        <Route path="/live" element={<LivePage />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminOnlyRoute>
+              <AdminMain />
+            </AdminOnlyRoute>
+          }
+        />
+        <Route
+          path="/player"
+          element={
+            <ProtectedRoute>
+              <PlayerMain />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/results"
+          element={
+            <AdminOnlyRoute>
+              <AdminResults />
+            </AdminOnlyRoute>
+          }
+        />
+        <Route
+          path="/live"
+          element={
+            <ProtectedRoute>
+              <LivePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   )
