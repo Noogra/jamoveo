@@ -10,8 +10,11 @@ export default function SongList({ results, onSelect }) {
           key={song.id}
           onClick={() => onSelect(song.id)}
         >
-          <div className="song-title">{song.title}</div>
-          <div className="song-artist">{song.artist}</div>
+          <img src={song.image} alt={song.title} className="song-card-image" />
+          <div className="song-info">
+            <div className="song-title">{song.title}</div>
+            <div className="song-artist">{song.artist}</div>
+          </div>
         </div>
       ))}
     </div>

@@ -5,6 +5,7 @@ export default function SongHeader({ song }) {
 
   return (
     <div className="song-header">
+      <img src={song.image} alt={song.title} className="song-header-image" />
       <h1 className="song-full-title">
         {song.title} <span className="by">by</span> {song.artist}
       </h1>

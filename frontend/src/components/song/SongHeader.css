@@ -5,6 +5,14 @@
   border-bottom: 1px solid #444;
 }
 
+.song-header-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
 .song-full-title {
   font-size: 3rem;
   font-weight: 600;
