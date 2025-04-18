@@ -38,7 +38,7 @@ export default function SignupPage({ defaultRole = "user" }) {
       const result = await response.json()
       if (response.ok) {
         setStatusMsg("Registration successful!")
-        localStorage.setItem("user", JSON.stringify(result.user))
+        sessionStorage.setItem("user", JSON.stringify(result.user))
         navigate("/")
       } else {
         setStatusMsg(result.message || "Could not register.")

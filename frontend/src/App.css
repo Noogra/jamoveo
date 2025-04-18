@@ -52,6 +52,10 @@ input, button, .my-input, .my-button {
 }
 
 @media screen and (max-width: 600px) {
+  .livepage-container{
+    padding: 20px 16px;
+    width: 100%;
+  }
   .container {
     padding: 20px 16px;
     width: 100%;

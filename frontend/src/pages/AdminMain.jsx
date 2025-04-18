@@ -8,11 +8,14 @@ import LogoutButton from "../components/logoutButton/LogoutButton.jsx"
 
 export default function AdminMain() {
   const [searchText, setSearchText] = useState("")
-  const [sessionStarted, setSessionStarted] = useState(false)
+  const alreadyStarted = localStorage.getItem("sessionStarted") === "true"
+  const [sessionStarted, setSessionStarted] = useState(alreadyStarted)
   const navigate = useNavigate()
 
   const handleSessionButton = () => {
     socket.emit(SocketSignals.START_SESSION)
+    localStorage.setItem("sessionStarted", "true")
+    //sessionStorage.setItem("joinedSession", "true")
     setSessionStarted(true)
   }
 

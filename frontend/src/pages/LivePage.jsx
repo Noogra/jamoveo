@@ -20,15 +20,24 @@ export default function LivePage() {
   const songId = location.state?.songId || null
   const songInfo = songList.find((song) => song.id === songId)
 
-  const user = JSON.parse(localStorage.getItem("user"))
+  const user = JSON.parse(sessionStorage.getItem("user"))
   const instrument = user?.instrument
   const isSinger = instrument === "vocals"
   const isAdmin = user?.role === "admin"
 
   const handleQuitButton = () => {
     socket.emit(SocketSignals.END_SESSION) // send to server
+    sessionStorage.removeItem("joinedSession")
+    localStorage.removeItem("sessionStarted")
     navigate("/")
   }
+
+  useEffect(() => {
+    const alreadyJoined = sessionStorage.getItem("joinedSession") === "true"
+    if (alreadyJoined) {
+      socket.emit(SocketSignals.JOIN_SESSION)
+    }
+  })
 
   useEffect(() => {
     let interval = null
@@ -47,6 +56,8 @@ export default function LivePage() {
   // listening
   useEffect(() => {
     socket.on(SocketSignals.SESSION_ENDED, () => {
+      localStorage.removeItem("sessionStarted")
+      sessionStorage.removeItem("joinedSession")
       navigate("/")
     })
 

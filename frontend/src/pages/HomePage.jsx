@@ -8,7 +8,7 @@ export default function HomePage() {
 
   useEffect(() => {
     // get user data from local storage
-    const storedUser = localStorage.getItem("user")
+    const storedUser = sessionStorage.getItem("user")
 
     if (storedUser) {
       try {
@@ -21,8 +21,8 @@ export default function HomePage() {
           navigate("/player")
         }
       } catch (err) {
-        console.error("Error parsing user from localStorage:", err)
-        localStorage.removeItem("user")
+        console.error("Error parsing user from sessionStorage:", err)
+        sessionStorage.removeItem("user")
       }
     }
   }, [navigate])

@@ -3,9 +3,14 @@ import "./LogoutButton.css"
 
 export default function LogoutButton() {
   const navigate = useNavigate()
+  const user = JSON.parse(sessionStorage.getItem("user"))
 
   const handleLogout = () => {
-    localStorage.removeItem("user")
+    sessionStorage.removeItem("user")
+    sessionStorage.removeItem("joinedSession")
+    if (user.role === "admin") {
+      localStorage.removeItem("sessionStarted")
+    }
     navigate("/")
   }
 
