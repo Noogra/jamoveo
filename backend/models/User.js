@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   instrument: {
     type: String,
-    enum: ["vocals", "guitars", "bass", "keyboard", "drums"],
+    enum: ["vocals", "guitar", "bass", "keyboard", "drums"],
     required: true,
   },
   role: { type: String, enum: ["user", "admin"], default: "user" },
