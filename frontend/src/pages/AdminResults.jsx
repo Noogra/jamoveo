@@ -1,5 +1,4 @@
 import socket from "../sockets/socket.js"
-
 import "./AdminResults.css"
 
 import { useEffect, useState } from "react"

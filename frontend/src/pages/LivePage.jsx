@@ -32,8 +32,8 @@ export default function LivePage() {
 
     if (autoScroll) {
       interval = setInterval(() => {
-        window.scrollBy({ top: 0.4, behavior: "smooth" })
-      })
+        window.scrollBy({ top: 1, behavior: "smooth" })
+      }, 100)
     }
     return () => {
       clearInterval(interval)
@@ -54,7 +54,6 @@ export default function LivePage() {
 
   useEffect(() => {
     if (!songId) return
-
     import(`../songs/${songId}.json`)
       .then((module) => {
         setSongContent(module.default)
