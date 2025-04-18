@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import Button from "../components/button/Button"
-import Input from "../components/input/Input"
+import LoginForm from "../components/auth/LoginForm"
 
 export default function LoginPage() {
   // import navigate to navigate between pages.
@@ -48,26 +47,7 @@ export default function LoginPage() {
   return (
     <div className="container">
       <h2>Login</h2>
-      <form onSubmit={attemptLogin}>
-        <Input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={handleInput}
-          required
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleInput}
-          required
-        />
-        <div className="login-button-wrapper">
-          <Button type="submit">Log In</Button>
-        </div>
-      </form>
-
+      <LoginForm onSubmit={attemptLogin} onChange={handleInput} />
       <div className="link-wrapper">
         <span className="line-text" onClick={() => navigate("/register")}>
           Create account

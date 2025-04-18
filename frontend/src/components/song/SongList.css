@@ -1,0 +1,40 @@
+.results-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .song-card {
+    background-color: #2e3440;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .song-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    background-color: #3b4252;
+  }
+  
+  .song-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  
+  .song-artist {
+    font-size: 1rem;
+    color: #bdbdbd;
+  }
+  
+  .no-results {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 60px;
+  }
+  

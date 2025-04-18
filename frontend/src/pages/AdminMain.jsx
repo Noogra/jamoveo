@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import socket from "../sockets/socket.js"
 import { SocketSignals } from "../utils/socketSignals.js"
+import socket from "../sockets/socket.js"
 import Button from "../components/button/Button"
 import Input from "../components/input/Input"
 import LogoutButton from "../components/logoutButton/LogoutButton.jsx"

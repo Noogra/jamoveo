@@ -4,6 +4,8 @@ import socket from "../sockets/socket"
 import { songList } from "../songs/songList"
 import "./LivePage.css"
 import { SocketSignals } from "../utils/socketSignals"
+
+import SongLyrics from "../components/song/SongLyrics"
 import Button from "../components/button/Button"
 import SongHeader from "../components/song/SongHeader"
 import LogoutButton from "../components/logoutButton/LogoutButton"
@@ -12,9 +14,10 @@ export default function LivePage() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const songId = location.state?.songId || null
   const [songContent, setSongContent] = useState(null)
   const [autoScroll, setAutoScroll] = useState(false)
+
+  const songId = location.state?.songId || null
   const songInfo = songList.find((song) => song.id === songId)
 
   const user = JSON.parse(localStorage.getItem("user"))
@@ -75,30 +78,14 @@ export default function LivePage() {
     <>
       <LogoutButton />
       <div className="livepage-container">
-        <h2>Live Page</h2>
         <SongHeader song={songInfo} />
-        {songContent.map((line, i) => (
-          <div className="livepage-line" key={i}>
-            {line.map((word, j) => (
-              <span
-                className="livepage-word"
-                key={j}
-                style={{ marginRight: 6 }}
-              >
-                {word.lyrics}
-                {word.chords && !isSinger && (
-                  <span className="livepage-chord">({word.chords})</span>
-                )}
-              </span>
-            ))}
-          </div>
-        ))}
-        <button
+        <SongLyrics content={songContent} isSinger={isSinger} />
+        <Button
           className="floating-toggle"
           onClick={() => setAutoScroll(!autoScroll)}
         >
           {autoScroll ? "Stop Scrolling" : "Start Scrolling"}
-        </button>
+        </Button>
         {isAdmin && <Button onClick={handleQuitButton}>Quit</Button>}
       </div>
     </>

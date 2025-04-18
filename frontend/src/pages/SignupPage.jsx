@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import Button from "../components/button/Button"
-import Input from "../components/input/Input"
+import SignupForm from "../components/auth/SignupForm"
 
 export default function SignupPage({ defaultRole = "user" }) {
   // import navigate to navigate between pages.
@@ -57,37 +56,11 @@ export default function SignupPage({ defaultRole = "user" }) {
           ? "Create an admin account"
           : "Create an account"}
       </h2>
-      <form onSubmit={submitRegistration}>
-        <Input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={updateField}
-          required
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={updateField}
-          required
-        />
-        <select
-          name="instrument"
-          value={userData.instrument}
-          onChange={updateField}
-          required
-          className="my-input"
-        >
-          <option value="">Choose your instrument</option>
-          <option value="vocals">Vocals</option>
-          <option value="guitar">Guitar</option>
-          <option value="bass">Bass</option>
-          <option value="keyboard">Keyboard</option>
-          <option value="drums">Drums</option>
-        </select>
-        <Button type="submit">Sign Up</Button>
-      </form>
+      <SignupForm
+        userData={userData}
+        onChange={updateField}
+        onSubmit={submitRegistration}
+      />
       {statusMsg && <p className="status-message">{statusMsg}</p>}
     </div>
   )
