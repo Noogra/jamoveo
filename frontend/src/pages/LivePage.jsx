@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import socket from "../sockets/socket"
 import { songList } from "../songs/songList"
 import "./LivePage.css"
-
+import { SocketSignals } from "../utils/socketSignals"
 import Button from "../components/button/Button"
 import SongHeader from "../components/song/SongHeader"
 import LogoutButton from "../components/logoutButton/LogoutButton"
@@ -23,7 +23,7 @@ export default function LivePage() {
   const isAdmin = user?.role === "admin"
 
   const handleQuitButton = () => {
-    socket.emit("end-session") // send to server
+    socket.emit(SocketSignals.END_SESSION) // send to server
     navigate("/")
   }
 
@@ -43,12 +43,12 @@ export default function LivePage() {
   // SOCKET
   // listening
   useEffect(() => {
-    socket.on("session-ended", () => {
+    socket.on(SocketSignals.SESSION_ENDED, () => {
       navigate("/")
     })
 
     return () => {
-      socket.off("session-ended") // to not listen twice
+      socket.off(SocketSignals.SESSION_ENDED) // to not listen twice
     }
   }, [navigate])
 

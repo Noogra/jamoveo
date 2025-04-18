@@ -72,13 +72,20 @@ export default function SignupPage({ defaultRole = "user" }) {
           onChange={updateField}
           required
         />
-        <Input
-          type="text"
+        <select
           name="instrument"
-          placeholder="Instrument"
+          value={userData.instrument}
           onChange={updateField}
           required
-        />
+          className="my-input"
+        >
+          <option value="">Choose your instrument</option>
+          <option value="vocals">Vocals</option>
+          <option value="guitar">Guitar</option>
+          <option value="bass">Bass</option>
+          <option value="keyboard">Keyboard</option>
+          <option value="drums">Drums</option>
+        </select>
         <Button type="submit">Sign Up</Button>
       </form>
       {statusMsg && <p className="status-message">{statusMsg}</p>}

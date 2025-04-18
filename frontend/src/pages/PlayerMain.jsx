@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import socket from "../sockets/socket"
+import { SocketSignals } from "../utils/socketSignals.js"
 import Button from "../components/button/Button"
 import LogoutButton from "../components/logoutButton/LogoutButton"
 
@@ -10,22 +11,22 @@ export default function PlayerMain() {
   const navigate = useNavigate()
 
   const handleJoinSession = () => {
-    socket.emit("join-session")
+    socket.emit(SocketSignals.JOIN_SESSION)
     setJoined(true)
   }
 
   useEffect(() => {
-    socket.on("session-started", () => {
+    socket.on(SocketSignals.SESSION_STARTED, () => {
       setSessionStarted(true)
     })
 
-    socket.on("live-song", (songId) => {
+    socket.on(SocketSignals.LIVE_SONG, (songId) => {
       navigate("/live", { state: { songId } })
     })
 
     return () => {
-      socket.off("session-started")
-      socket.off("live-song")
+      socket.off(SocketSignals.SESSION_STARTED)
+      socket.off(SocketSignals.LIVE_SONG)
     }
   }, [navigate])
 

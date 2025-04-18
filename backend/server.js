@@ -2,6 +2,7 @@ const app = require("./app")
 const http = require("http")
 const mongoose = require("mongoose")
 const { Server } = require("socket.io")
+const SocketSignals = require("./utils/socketSignals")
 const PORT = process.env.PORT || 5050
 
 require("dotenv").config()
@@ -19,21 +20,21 @@ const io = new Server(server, {
 
 // listen to connections
 io.on("connection", (socket) => {
-  socket.on("join-session", () => {
+  socket.on(SocketSignals.JOIN_SESSION, () => {
     socket.join("rehearsal")
   })
 
-  socket.on("start-session", () => {
-    io.emit("session-started")
+  socket.on(SocketSignals.START_SESSION, () => {
+    io.emit(SocketSignals.SESSION_STARTED)
   })
 
-  socket.on("selected-song", (songId) => {
+  socket.on(SocketSignals.SELECTED_SONG, (songId) => {
     // broadcast to all users
-    io.to("rehearsal").emit("live-song", songId)
+    io.to("rehearsal").emit(SocketSignals.LIVE_SONG, songId)
   })
 
-  socket.on("end-session", () => {
-    io.to("rehearsal").emit("session-ended")
+  socket.on(SocketSignals.END_SESSION, () => {
+    io.to("rehearsal").emit(SocketSignals.SESSION_ENDED)
   })
 })
 
